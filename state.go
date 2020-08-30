@@ -1733,6 +1733,10 @@ func (ls *LState) GetInfo(what string, dbg *Debug, fn LValue) (LValue, error) {
 
 }
 
+func (ls *LState) GetFile() string {
+	return ls.currentFrame.Fn.Proto.SourceName
+}
+
 func (ls *LState) GetStack(level int) (*Debug, bool) {
 	frame := ls.currentFrame
 	for ; level > 0 && frame != nil; frame = frame.Parent {
